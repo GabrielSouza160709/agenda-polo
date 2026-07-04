@@ -26,7 +26,7 @@ export default function Document() {
           content="Sistema interno de agendamento de sala de reuniao da Polo Negocios Imobiliarios"
         />
         <meta name="theme-color" content="#F97316" />
-        <link rel="icon" href="/logo-polo.png" />
+        <link rel="icon" href="/favicon.png" />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
