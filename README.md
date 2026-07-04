@@ -1,353 +1,198 @@
-<div align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FFCA28&height=180&section=header&text=Ignite%20Call&fontSize=42&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Scheduling%20Platform%20with%20Google%20Calendar&descSize=18&descAlignY=52"/>
-</div>
+# Polo Agenda
 
-## Overview
+[<img alt="Next.js" src="https://img.shields.io/badge/Next.js-15.5.15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>](https://nextjs.org/)
+[<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>](https://www.typescriptlang.org/)
+[<img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white"/>](https://www.postgresql.org/)
+[<img alt="Prisma" src="https://img.shields.io/badge/Prisma-6.3.0-2D3748?style=for-the-badge&logo=prisma&logoColor=white"/>](https://www.prisma.io/)
+[<img alt="Railway" src="https://img.shields.io/badge/Railway-Deploy-000000?style=for-the-badge&logo=railway&logoColor=white"/>](https://railway.app/)
 
-<div align="center">
-  <img src="./docs/screenshot.png" alt="Ignite Call Screenshot" width="100%" />
-</div>
-
-
-<div align="center">
-
-A modern scheduling system built with Next.js and TypeScript, featuring Google Calendar integration, Google Meet automation, and advanced scheduling capabilities.
-
-[<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.0-blue.svg"/>](https://www.typescriptlang.org/)
-[<img alt="Next.js" src="https://img.shields.io/badge/Next.js-Latest-black.svg"/>](https://nextjs.org/)
-[<img alt="Prisma" src="https://img.shields.io/badge/Prisma-6.3.0-2D3748.svg"/>](https://www.prisma.io/)
-[<img alt="Ignite UI" src="https://img.shields.io/badge/Ignite_UI-Latest-00875F.svg"/>](https://github.com/rocketseat/ignite-ui)
-[<img alt="NextAuth.js" src="https://img.shields.io/badge/NextAuth.js-Latest-000000.svg"/>](https://next-auth.js.org/)
-[<img alt="Google API" src="https://img.shields.io/badge/Google_APIs-4285F4.svg"/>](https://developers.google.com/apis)
-[<img alt="Codecov" src="https://img.shields.io/codecov/c/github/rafaumeu/ignitecall-app"/>](https://codecov.io/gh/rafaumeu/ignitecall-app)
-[<img alt="Coverage" src="https://codecov.io/gh/rafaumeu/ignitecall-app/branch/main/graph/badge.svg"/>](https://codecov.io/gh/rafaumeu/ignitecall-app)
-[<img alt="CI" src="https://github.com/rafaumeu/ignitecall-app/actions/workflows/ci.yml/badge.svg"/>](https://github.com/rafaumeu/ignitecall-app/actions/workflows/ci.yml)
-[<img alt="Docker" src="https://img.shields.io/badge/Docker-ready-2496ED.svg"/>](https://docker.com/)
-[<img alt="Swagger" src="https://img.shields.io/badge/Swagger_UI-85EA2D.svg"/>](https://swagger.io/)
-
-**🌐 [Live Demo](https://ignitecall-app.vercel.app)** • **📸 [Screenshots](#-screenshots)**
+Sistema interno de agendamento de sala de reunião desenvolvido para a **Polo Negócios Imobiliários**. Trata-se de uma ferramenta operacional voltada para um grupo restrito de 6 a 7 usuários internos para gerenciar a ocupação e reservas do espaço de reuniões da empresa.
 
 ---
 
-<p align="center">
-  <a href="https://github.com/rafaumeu/ignitecall-app/generate"><img src="https://img.shields.io/badge/Use_This_Template-FFCA28?style=for-the-badge&logo=github&logoColor=white" alt="Use this template"/></a>
-</p>
+## 📸 Descrição Visual das Telas Principais
 
-
-## 📖 Table of Contents
-
-| [Features](#-features) | [Tech Stack](#-tech-stack) | [Development Tools](#-development-tools) |
-|----------------------|---------------------------|------------------------------------------|
-| [Prerequisites](#-prerequisites) | [Setup](#️-setup) | [Environment Variables](#-environment-variables) |
-| [Project Structure](#️-project-structure) | [Docker Setup](#-docker-setup) | [Contributing](#-contributing) |
-
----
-</div>
-
-## 📸 Screenshots
-
-<!-- Add screenshots of: scheduling interface, calendar view, profile page, time interval configuration -->
-
-| Scheduling | Calendar | Profile |
-|:---:|:---:|:---:|
-| *Scheduling form with date/time selection* | *Interactive calendar with availability* | *User profile with bio* |
-
-## 🚀 Features
-
-### Google Integration
-
-- **Google Meet Integration**:
-  - Automated Google Meet creation for scheduled meetings
-  - Direct integration with Google Calendar API
-  - Secure OAuth token management and refresh
-  - Attendee management and conference data handling
-
-- **Google Calendar Integration**:
-  - Seamless calendar synchronization
-  - OAuth 2.0 authentication with offline access
-  - Automatic token refresh mechanism
-  - Event creation and management
-  - Calendar scope authorization
-
-### Scheduling System
-
-- **Advanced Scheduling**:
-  - Interactive calendar interface with blocked dates
-  - Dynamic time slots based on user availability
-  - Conflict detection and prevention
-  - Past dates blocking
-  - Real-time availability updates
-  - Multi-step scheduling form with confirmation
-
-### User Management
-
-- **Profile System**:
-  - Custom user profiles with bio
-  - Username-based routing
-  - Profile customization options
-  - Cascade relationship configuration
-  - Session management with NextAuth.js
-
-### Time Management
-
-- **Availability Control**:
-  - Flexible weekly schedule configuration
-  - Custom time intervals for each day
-  - Automated availability calculation
-  - Time zone support with Day.js
-  - Conflict prevention system
-
-### Data Handling
-
-- **Efficient Data Management**:
-  - React Query for efficient data fetching
-  - Optimistic updates
-  - Error boundary handling
-  - Form validation with Zod
-  - Real-time data synchronization
-
-## Tech Stack
-
-| | | |
-|:---:|:---:|:---:|
-| <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white"/> | <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/> | <img alt="Prisma" src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white"/> |
-| <img alt="React Hook Form" src="https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"/> | <img alt="Axios" src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"/> | <img alt="NextAuth.js" src="https://img.shields.io/badge/NextAuth.js-000000?style=for-the-badge&logo=next.js&logoColor=white"/> |
-| <img alt="React Query" src="https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white"/> | <img alt="Day.js" src="https://img.shields.io/badge/Day.js-FF5F4C?style=for-the-badge&logo=day.js&logoColor=white"/> | |
-
-## Development Tools
-
-| | | |
-|:---:|:---:|:---:|
-| <img alt="Biome" src="https://img.shields.io/badge/Biome-60A5FA?style=for-the-badge&logo=biome&logoColor=white"/> | <img alt="Zod" src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white"/> | <img alt="Yarn" src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white"/> |
+- **Página de Login (`/`)**: Tela inicial limpa com autenticação via Google OAuth, restrita por lista de e-mails permitidos (Allowlist).
+- **Página da Agenda (`/agenda`)**: Interface principal que contém o calendário interativo de reservas do Schedule-X. Apresenta controles de visualização (Dia, Semana, Mês), exibição do status da sala em tempo real (`RoomStatus`), alternância de tema escuro/claro e o botão para criação de novas reservas.
+- **Página de Minhas Reservas (`/minhas-reservas`)**: Tabela paginada listando apenas as reservas criadas pelo usuário autenticado, com a opção direta de cancelamento para compromissos futuros.
+- **Painel Admin - Usuários (`/admin/usuarios`)**: Tela restrita a administradores para visualização de todos os usuários cadastrados. Permite modificar a permissão (`USER` ou `ADMIN`), ativar/desativar o acesso de um usuário ao sistema (`isActive`) e excluir contas permanentemente (com remoção em cascata e cancelamento de reservas).
+- **Painel Admin - Métricas (`/admin/metricas`)**: Painel de análise operacional exclusivo para administradores. Exibe estatísticas consolidadas da ferramenta (total de reservas, reservas no mês, taxa de cancelamento e o usuário mais ativo do mês), gráficos de barras em HTML/CSS puro do fluxo de reservas por dia da semana e horários de pico (das 06h às 20h), além de uma tabela detalhada de reservas por usuário.
 
 ---
 
-## 🔄 CI/CD Pipeline
+## 🚀 Funcionalidades do Sistema
 
-### Continuous Integration
-
-Our CI pipeline automatically runs on every push and pull request:
-
-- **Code Quality Checks**:
-  - TypeScript type checking
-  - ESLint for code style
-  - Biome formatting validation
-  - Super-linter for additional checks
-
-- **Testing Strategy**:
-  - Unit tests with Vitest
-  - Multi-node version testing (16, 18, 20)
-  - Automated test runs on pull requests
-
-### Automated Workflows
-
-- **Project Board Automation**:
-  - Automatic issue/PR tracking
-  - Status updates (Todo → In Progress → Done)
-  - Integration with GitHub Projects
-
-- **Pull Request Management**:
-  - Automated PR labeling
-  - Code review enforcement
-  - Branch protection rules
-
-### Workflow Files
-
-- `ci.yml`: Main CI pipeline
-- `code-review.yml`: Code quality checks
-- `project-automation.yml`: Project board automation
-- `labeler.yml`: PR labeling automation
-
-To view the workflow runs, visit the [Actions tab](https://github.com/rafaumeu/ignitecall-app/actions) in the repository.
+- **Agendamento de Reservas**: Agendamento de reuniões definindo data, horário de início e de término.
+- **Reservas Privadas**: O usuário pode sinalizar se a reserva precisa de privacidade. Reservas privadas ocultam o título e as observações para outros usuários no calendário e e-mails, exibindo apenas "Sala reservada" e o nome do responsável.
+- **Notificações Assíncronas por E-mail (SMTP)**: Integração com Nodemailer para notificar todos os outros usuários ativos por e-mail automaticamente e de forma não-bloqueante (fire-and-forget) quando uma reserva é criada, editada ou cancelada.
+- **Controle de Acesso por Allowlist**: Apenas e-mails contidos na lista de permissões no arquivo de ambiente conseguem se cadastrar ou efetuar login.
+- **Gestão Administrativa**: Ativação/desativação e exclusão lógica e física de contas pelo painel de administração.
+- **Painel de Métricas e Análise de Ocupação**: Gráficos e tabelas consolidadas sobre o uso e os horários de pico da sala de reunião.
+- **Suporte a Tema Escuro (Dark Mode)**: Tema escuro totalmente persistido no localStorage do navegador sob a chave `polo-agenda-theme`.
 
 ---
 
-## 📦 Prerequisites
+## 🛠️ Stack Tecnológica
 
-- Node.js 20+ (LTS version)
-- Yarn package manager
-- Docker and Docker Compose
-- Google Cloud Platform account with Calendar and Meet APIs enabled
-- PostgreSQL (production) / SQLite (development)
+As dependências principais e ferramentas do projeto extraídas do `package.json`:
 
-## 🛠️ Setup
+- **Next.js**: `15.5.15` (utilizando Pages Router)
+- **React**: `19.0.0`
+- **TypeScript**: `^5` (modo estrito)
+- **Prisma**: `^6.3.0` (Client e CLI)
+- **PostgreSQL**: `16-alpine` (Banco de dados relacional)
+- **NextAuth**: `^4.24.14` (Provedor Google OAuth)
+- **Tailwind CSS**: `^3.4.17`
+- **Schedule-X**: `@schedule-x/calendar` `^4.6.0` (visualização de agenda)
+- **Nodemailer**: `^6.9.16` (envio de e-mails via SMTP)
+- **Zod**: `^3.24.1` (validação e tipagem de entradas e variáveis de ambiente)
+- **Vitest**: `^3.1.0` (framework de testes automatizados)
+- **Biome**: `^1.9.4` (linter e formatador de código)
 
-1. Clone the repository:
+---
 
-```bash
-git clone https://github.com/rafaumeu/ignitecall-app.git
-cd ignitecall-app
-```
+## 📦 Pré-requisitos
 
-2. Install dependencies:
+- Node.js 20+ (LTS recomendado)
+- Docker e Docker Compose instalados localmente
+- Credenciais OAuth obtidas no Google Cloud Console (ID do cliente e Segredo)
 
-```bash
-yarn install
-```
+---
 
-3. Set up environment variables:
+## ⚙️ Configuração Local Passo a Passo
 
-```bash
-cp .env.example .env
-```
+1. **Clonar o Repositório e Instalar Dependências:**
+   ```powershell
+   git clone <url-do-repositorio>
+   cd ignitecall-app
+   npm install
+   ```
 
-4. Configure Google OAuth:
-   - Enable Calendar and Meet APIs in Google Cloud Console
-   - Set up OAuth consent screen with required scopes
-   - Create OAuth credentials and add redirect URIs
-   - Add credentials to .env file
+2. **Configuração de Variáveis de Ambiente:**
+   Crie um arquivo `.env` na raiz do projeto a partir do modelo existente e configure as variáveis obrigatórias:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
 
-5. Start the development environment:
+3. **Subir Banco de Dados via Docker:**
+   O banco de dados PostgreSQL roda no container `agenda-postgres` através do Docker Compose (exposto localmente na porta `5433`):
+   ```powershell
+   docker compose up -d
+   ```
 
-```bash
-docker-compose up -d  # Start PostgreSQL
-yarn prisma migrate dev  # Run database migrations
-yarn dev  # Start development server
-```
+4. **Rodar as Migrações do Banco:**
+   Execute as migrações do Prisma para estruturar o banco de dados local:
+   ```powershell
+   npx prisma migrate dev
+   ```
 
-## 🐳 Docker Setup
+5. **Popolar o Banco de Dados (Seed):**
+   Rode o comando de seed para cadastrar o e-mail do administrador inicial configurado em `INITIAL_ADMIN_EMAIL`:
+   ```powershell
+   npx prisma db seed
+   ```
 
-The project uses Docker to provide a complete development environment (approximately 300MB). With a single command, you get both the application and database running:
+6. **Iniciar o Servidor de Desenvolvimento:**
+   ```powershell
+   npm run dev
+   ```
+   A aplicação estará acessível na porta livre indicada no terminal (geralmente `http://localhost:3001`).
 
-```yaml
-# docker-compose.yml
-version: '3'
+---
 
-services:
-  postgres:
-    image: postgres
-    container_name: ignitecall-postgres
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=ignitecall
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+## 🔒 Variáveis de Ambiente (`.env`)
 
-  app:
-    build: .
-    container_name: ignitecall-app
-    ports:
-      - 3000:3000
-    depends_on:
-      - postgres
-    environment:
-      - DATABASE_URL=postgresql://postgres:docker@postgres:5432/ignitecall
+Tabela das configurações do ambiente validadas pelo Zod em `src/lib/env.ts`:
 
-volumes:
-  pgdata:
-```
+| Variável | Obrigatória | Descrição |
+|---|---|---|
+| `DATABASE_URL` | Sim | String de conexão principal do PostgreSQL. Porta padrão local: `5433`. |
+| `DATABASE_DIRECT_URL` | Sim | String de conexão direta do PostgreSQL, usada para migrações do Prisma. |
+| `GOOGLE_CLIENT_ID` | Sim | ID do Cliente gerado no Console do Google Cloud para o login. |
+| `GOOGLE_CLIENT_SECRET` | Sim | Segredo do Cliente gerado no Console do Google Cloud para o login. |
+| `NEXTAUTH_SECRET` | Sim | String secreta usada pelo NextAuth para criptografar tokens. |
+| `NEXTAUTH_URL` | Sim | URL completa da aplicação (ex: `http://localhost:3001` ou a URL de produção). |
+| `INITIAL_ADMIN_EMAIL` | Sim | E-mail do usuário administrador inicial criado no seed do banco de dados. |
+| `ALLOWED_EMAILS` | Sim | Lista de e-mails autorizados a logar na plataforma, separados por vírgula. |
+| `SMTP_HOST` | Não | Host do servidor SMTP para envio de notificações por e-mail (ex: `smtp.gmail.com`). |
+| `SMTP_PORT` | Não | Porta do servidor SMTP (ex: `587` ou `465`). |
+| `SMTP_USER` | Não | Usuário do e-mail do remetente no servidor SMTP. |
+| `SMTP_PASS` | Não | Senha de aplicativo (App Password) do servidor de e-mail. |
+| `SMTP_FROM` | Não | Formato do remetente das notificações (ex: `"Polo Agenda <email@gmail.com>"`). |
+| `NEXT_TELEMETRY_DISABLED` | Não | Define se a telemetria do Next.js está desativada (`1`). |
 
-Quick Start with Docker:
+---
 
-```bash
-# Start the entire application
-docker-compose up -d
+## 📝 Regras de Negócio Reais
 
-# The application will be available at http://localhost:3000
-# PostgreSQL will be available at postgresql://postgres:docker@localhost:5432/ignitecall
-```
+- **Janela de Funcionamento**: Reservas só podem ser efetuadas entre **06:00** e **20:00**. Essa regra é validada tanto no front-end quanto no back-end da API.
+- **Garantia de Sem Conflito**: Uma restrição de exclusão (`exclusion constraint`) no banco de dados impede sobreposição de horários. Tentativas de agendamento conflitantes geram erro `23P01` no PostgreSQL e a API retorna status `409 Conflict` com uma mensagem amigável em português.
+- **Remoção de Reserva**: O cancelamento de reservas pelo usuário comum ou pelo painel de reservas funciona por meio de soft-delete, alterando o status do registro para `CANCELLED`.
+- **Hierarquia de Permissões**: 
+  - `USER`: Apenas gerencia suas próprias reservas na agenda e na tela de Minhas Reservas.
+  - `ADMIN`: Possui acesso completo às telas `/admin/usuarios` e `/admin/metricas`. Pode ativar/desativar outros usuários, mudar permissões, ver painel de estatísticas detalhadas e realizar exclusões permanentes.
+- **Login e Segurança**:
+  - Antes de qualquer conexão com o banco de dados, o NextAuth valida se o e-mail de login pertence à lista `ALLOWED_EMAILS`. Se não pertencer, o acesso é barrado imediatamente redirecionando para a rota de erro de autenticação `/auth/error?error=AccessDenied`.
+  - Contas marcadas com `isActive: false` são bloqueadas e não podem efetuar login ou acessar as páginas internas da aplicação.
 
-Features of this setup:
+---
 
-- Complete development environment in a single command
-- PostgreSQL database with persistent data
-- Optimized production-ready Node.js image
-- Automatic database connection
-- Hot reload for development
-- Total size: ~300MB
+## 📁 Estrutura de Pastas
 
-## 🔧 Environment Variables
-
-```env
-# Database
-DATABASE_URL="postgresql://postgres:docker@localhost:5432/ignitecall"
-
-# Google OAuth
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-
-# NextAuth.js
-NEXTAUTH_SECRET="your-nextauth-secret"
-NEXTAUTH_URL="http://localhost:3000"
-```
-
-## 🏗️ Project Structure
+Estrutura de arquivos do projeto organizada segundo as regras de desenvolvimento do projeto:
 
 ```bash
 ignitecall-app/
+├── prisma/                    # Configurações do Prisma ORM
+│   ├── seed.ts                # Seed do banco (criação do admin inicial)
+│   └── schema.prisma          # Definições de tabelas e enums do banco
+├── public/                    # Imagens e logotipos estáticos (logo-polo.png)
 ├── src/
-│   ├── @types/
-│   │   └── next-auth.d.ts
-│   ├── pages/
-│   │   ├── api/
-│   │   │   ├── auth/
-│   │   │   ├── users/
-│   │   │   └── schedule/
-│   │   ├── schedule/
-│   │   └── register/
-│   ├── components/
-│   │   ├── Calendar/
-│   │   ├── ScheduleForm/
-│   │   └── TimeIntervals/
-│   ├── lib/
-│   │   ├── google/
-│   │   ├── auth/
-│   │   └── prisma.ts
-│   └── styles/
-│       └── globals.ts
-├── prisma/
-│   ├── migrations/
-│   └── schema.prisma
-└── biome.json
+│   ├── components/            # Componentes React reutilizáveis (app-shell, status da sala)
+│   │   └── ui/                # Componentes básicos estilizados (botões, switches, toasts, etc)
+│   ├── lib/                   # Módulos utilitários (prisma, rate limit, env, mailer de e-mail)
+│   ├── styles/                # Estilos globais e configurações de cores (globals.css)
+│   └── pages/                 # Páginas da aplicação usando Pages Router (Next.js)
+│       ├── agenda/            # Rota principal do calendário (/agenda)
+│       ├── admin/             # Páginas restritas do administrador (/admin/usuarios, /admin/metricas)
+│       ├── auth/              # Páginas de fluxo e erros de login (/auth/error)
+│       ├── minhas-reservas/   # Página de listagem de reservas do usuário (/minhas-reservas)
+│       ├── api/               # Controladores e endpoints back-end da API do Next.js
+│       ├── _app.page.tsx      # Configuração global de renderização de páginas e contextos
+│       └── index.page.tsx     # Página inicial / Tela de login
+├── docker-compose.yaml        # Docker Compose para orquestração local do PostgreSQL
+├── next.config.ts             # Configurações de compilação, redirecionamentos e headers do Next.js
+├── tailwind.config.ts         # Tokens visuais e design system no Tailwind CSS
+└── package.json               # Gerenciamento de scripts e dependências do projeto
 ```
-
-## 📱 Components
-
-To be documented based on project implementation.
-
-## 📚 API Documentation
-
-Interactive Swagger UI available at `/docs` when running the server.
-
-### Endpoints
-
-| Method | Route | Description |
-|---|---|---|
-| `POST` | `/api/users` | Create a new user |
-| `PUT` | `/api/users/profile` | Update authenticated user's bio |
-| `GET` | `/api/users/metrics` | Get scheduling metrics for authenticated user |
-| `POST` | `/api/users/time-intervals` | Set weekly availability time intervals |
-| `GET` | `/api/users/{username}/availability` | Get available time slots for a date |
-| `POST` | `/api/users/{username}/schedule` | Book a scheduling slot |
-| `GET` | `/api/users/{username}/blocked-dates` | Get blocked dates for a month |
-
-### Generate Typed Client
-
-```bash
-yarn generate:client
-```
-
-## 🛡️ License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: add some amazing feature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ---
 
-<div align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FFCA28&height=100&section=footer"/>
-  <br/><sub>Built with ❤️ by <a href="https://github.com/rafaumeu">Rafael Zendron</a></sub>
-  <br/>
-  <a href="https://www.linkedin.com/in/rafael-dias-zendron-528290132/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="https://github.com/rafaumeu"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/></a>
-</div>
+## 🚀 Instruções de Deploy na Railway
+
+A aplicação está configurada para deploy simplificado na plataforma **Railway**:
+
+1. **Modo Standalone**: A propriedade `output: 'standalone'` está ativada no `next.config.ts` para criar builds compactos e otimizados para contêineres Docker da Railway.
+2. **Script de Inicialização**: O script `start` no `package.json` inicia o Next.js limitando o consumo de heap do Node a `320MB` (`node --max-old-space-size=320 ...`), mantendo o serviço estável e dentro da cota de memória gratuita da plataforma.
+3. **Instalação e Geração Automática**: O script `build` executa `prisma generate` antes do build principal para garantir que os esquemas do Prisma Client estejam atualizados na máquina de compilação.
+4. **Configuração de Variáveis de Ambiente**:
+   - Conecte o banco de dados PostgreSQL do Railway à aplicação usando a variável `DATABASE_URL`.
+   - Adicione todas as demais variáveis obrigatórias listadas na seção de Variáveis de Ambiente na dashboard da Railway.
+   - Configure a variável `NEXT_TELEMETRY_DISABLED=1` para desativar a telemetria do framework e acelerar as compilações.
+
+---
+
+## 💻 Scripts Disponíveis (`package.json`)
+
+- `npm run dev`: Inicia o servidor Next.js em modo de desenvolvimento local.
+- `npm run build`: Roda o Prisma Client Generator e compila a aplicação para produção (`prisma generate && next build`).
+- `npm run start`: Inicia o servidor de produção compilado com limite otimizado de uso de memória.
+- `npm run lint`: Executa a verificação estática de código com o Biome.
+- `npm run format`: Corrige a formatação e estilo do código automaticamente.
+- `npm run test`: Executa os testes de unidade da aplicação via Vitest.
+
+---
+
+## 👥 Créditos
+
+Desenvolvido por **Gabriel Souza** para a **Polo Negócios Imobiliários**.
