@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: agenda-postgres
+    volumes:
+      - agenda_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=ignitecall
+    ports:
+      - 5433:5432
+
+volumes:
+  agenda_db:
