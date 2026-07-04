@@ -4,6 +4,7 @@ import {
   defaultReservationFormValues,
   localFieldsToIso,
   validateReservationForm,
+  isTimeWithinBoundaries,
 } from '@/lib/reservation-client'
 import { Temporal } from 'temporal-polyfill'
 import { describe, expect, it, vi } from 'vitest'
@@ -117,5 +118,37 @@ describe('reservation client validation', () => {
     expect(values.date).toBe('2030-01-11')
     expect(values.startsAt).toBe('08:00')
     expect(values.endsAt).toBe('09:00')
+  })
+
+  describe('isTimeWithinBoundaries', () => {
+    it('returns false for 05:59', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T05:59:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(false)
+    })
+
+    it('returns true for 06:00', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T06:00:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(true)
+    })
+
+    it('returns true for 12:00', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T12:00:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(true)
+    })
+
+    it('returns true for 19:59', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T19:59:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(true)
+    })
+
+    it('returns false for 20:00', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T20:00:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(false)
+    })
+
+    it('returns false for 21:00', () => {
+      const dt = Temporal.ZonedDateTime.from('2030-01-10T21:00:00[America/Sao_Paulo]')
+      expect(isTimeWithinBoundaries(dt)).toBe(false)
+    })
   })
 })

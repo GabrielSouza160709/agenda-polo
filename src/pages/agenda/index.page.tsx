@@ -10,6 +10,8 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import {
   ROOM_TIME_ZONE,
+  CALENDAR_DAY_BOUNDARIES,
+  isTimeWithinBoundaries,
   type ReservationDTO,
   type ReservationFormValues,
   defaultReservationFormValues,
@@ -137,9 +139,10 @@ function todayRangeIso() {
 }
 
 function scrollCalendarToCurrentTime() {
+  const hasHiddenIndicator = document.querySelector('.hide-current-time')
   const indicator = document.querySelector('.sx__current-time-indicator')
 
-  if (indicator) {
+  if (indicator && !hasHiddenIndicator) {
     indicator.scrollIntoView({ block: 'center', inline: 'nearest' })
     return
   }
@@ -152,10 +155,13 @@ function scrollCalendarToCurrentTime() {
     return
   }
 
-  const now = new Date()
-  const minutes = now.getHours() * 60 + now.getMinutes()
-  const businessStart = 6 * 60
-  const businessEnd = 20 * 60
+  const [startHours, startMinutes] = CALENDAR_DAY_BOUNDARIES.start.split(':').map(Number)
+  const [endHours, endMinutes] = CALENDAR_DAY_BOUNDARIES.end.split(':').map(Number)
+  const businessStart = startHours * 60 + startMinutes
+  const businessEnd = endHours * 60 + endMinutes
+
+  const nowZoned = Temporal.Now.zonedDateTimeISO(ROOM_TIME_ZONE)
+  const minutes = nowZoned.hour * 60 + nowZoned.minute
   const clampedMinutes = Math.min(businessEnd, Math.max(businessStart, minutes))
   scroller.scrollTop =
     (scroller.scrollHeight - scroller.clientHeight) *
@@ -201,6 +207,9 @@ function shouldIgnoreShortcut(event: KeyboardEvent) {
 
 export default function Agenda({ user }: AgendaProps) {
   const [calendarApp, setCalendarApp] = useState<CalendarApp | null>(null)
+  const [isWithinBoundaries, setIsWithinBoundaries] = useState(() => {
+    return isTimeWithinBoundaries(Temporal.Now.zonedDateTimeISO(ROOM_TIME_ZONE))
+  })
   const [statusReservations, setStatusReservations] = useState<
     ReservationDTO[]
   >([])
@@ -250,6 +259,8 @@ export default function Agenda({ user }: AgendaProps) {
   }, [])
 
   const refreshStatus = useCallback(async () => {
+    setIsWithinBoundaries(isTimeWithinBoundaries(Temporal.Now.zonedDateTimeISO(ROOM_TIME_ZONE)))
+
     const now = new Date()
     const start = new Date(now.getTime() - 60_000).toISOString()
     const end = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
@@ -348,10 +359,7 @@ export default function Agenda({ user }: AgendaProps) {
         defaultView: isMobile ? viewDay.name : viewWeek.name,
         locale: 'pt-BR',
         timezone: ROOM_TIME_ZONE,
-        dayBoundaries: {
-          start: '06:00',
-          end: '20:00',
-        },
+        dayBoundaries: CALENDAR_DAY_BOUNDARIES,
         isDark: document.documentElement.classList.contains('dark'),
         calendars: {
           normal: {
@@ -535,7 +543,9 @@ export default function Agenda({ user }: AgendaProps) {
 
         <div
           ref={calendarFrameRef}
-          className="relative min-h-[620px] flex-1 rounded-lg border border-border bg-card shadow-[var(--shadow-sm)] md:min-h-[680px]"
+          className={`relative min-h-[620px] flex-1 rounded-lg border border-border bg-card shadow-[var(--shadow-sm)] md:min-h-[680px] ${
+            !isWithinBoundaries ? 'hide-current-time' : ''
+          }`}
         >
           {calendarApp ? (
             <div className="flex h-full min-h-[620px] flex-col md:min-h-[680px]">

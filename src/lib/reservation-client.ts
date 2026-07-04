@@ -1,20 +1,36 @@
 import { Temporal } from 'temporal-polyfill'
 
 export const ROOM_TIME_ZONE = 'America/Sao_Paulo'
-export const BUSINESS_HOURS_ERROR =
-  'Reservas permitidas apenas entre 06:00 e 20:00'
-export const BUSINESS_HOURS = {
+export const CALENDAR_DAY_BOUNDARIES = {
   start: '06:00',
-  earliestEnd: '06:15',
-  latestStart: '19:45',
   end: '20:00',
 } as const
 
+const [startHours, startMinutes] = CALENDAR_DAY_BOUNDARIES.start.split(':').map(Number)
+const [endHours, endMinutes] = CALENDAR_DAY_BOUNDARIES.end.split(':').map(Number)
+const BUSINESS_START_MINUTES = startHours * 60 + startMinutes
+const BUSINESS_END_MINUTES = endHours * 60 + endMinutes
+
+export const BUSINESS_HOURS_ERROR =
+  `Reservas permitidas apenas entre ${CALENDAR_DAY_BOUNDARIES.start} e ${CALENDAR_DAY_BOUNDARIES.end}`
+
+export const BUSINESS_HOURS = {
+  start: CALENDAR_DAY_BOUNDARIES.start,
+  earliestEnd: '06:15',
+  latestStart: '19:45',
+  end: CALENDAR_DAY_BOUNDARIES.end,
+} as const
+
 const MIN_RESERVATION_MINUTES = 15
-const BUSINESS_START_MINUTES = 6 * 60
-const BUSINESS_END_MINUTES = 20 * 60
 const EARLIEST_END_MINUTES = BUSINESS_START_MINUTES + MIN_RESERVATION_MINUTES
 const LATEST_START_MINUTES = BUSINESS_END_MINUTES - MIN_RESERVATION_MINUTES
+
+export function isTimeWithinBoundaries(dateTime: Temporal.ZonedDateTime) {
+  const localTime = dateTime.withTimeZone(ROOM_TIME_ZONE)
+  const currentMinutes = localTime.hour * 60 + localTime.minute
+  return currentMinutes >= BUSINESS_START_MINUTES && currentMinutes < BUSINESS_END_MINUTES
+}
+
 
 export interface ReservationDTO {
   id: string
